@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Chart.Name }}-test
+  namespace: {{ .Values.namespace }}
+  annotations:
+    helm.sh/hook: test
+spec:
+  containers:
+    - name: integration-test
+      image: {{ .Values.image.repository }}/{{ .Chart.Name }}-test:{{ .Values.image.version }}
+      env:
+        - name: TEST_URL
+          value: http://{{ .Chart.Name }}.{{ .Values.namespace }}/hello
+  restartPolicy: Never

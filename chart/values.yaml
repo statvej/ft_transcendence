@@ -1,0 +1,27 @@
+replicaCount: 1
+
+namespace: helm
+image:
+  repository: fstarykacr.azurecr.io
+  version: 1
+
+deployment:
+  restartPolicy: Always
+  rest:
+    port: 8080
+  probes:
+    port: 8081
+
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  class: nginx
+  host: hello.fedir.hypercube.rocks
+  tls:
+  - hosts:
+      - hello.fedir.hypercube.rocks
