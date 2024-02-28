@@ -7,6 +7,7 @@ COPY . .
 RUN npm install
 
 RUN npx prisma generate
+RUN ls -la
 RUN chmod 777 start.sh
 
 #RUN npm run build

@@ -47,13 +47,13 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Build and push app docker image
+      - name: Build and push frontend docker image
         if:  ${{needs.paths-filter.outputs.was-app-changed}} == 'true'
         run: |
           docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/transcendence-frontend:${{needs.define-version.outputs.image_version}} -f frontend/Dockerfile .
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/transcendence-frontend:${{needs.define-version.outputs.image_version}}  
 
-      - name: Build and push test docker
+      - name: Build and push backend docker
         run: |
           docker  build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/transcendence-backend:${{needs.define-version.outputs.image_version}} -f backend/Dockerfile .
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/transcendence-backend:${{needs.define-version.outputs.image_version}}
