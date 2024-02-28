@@ -40,23 +40,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: |
-          cd frontend
-          npm install
-          cd ../backend
-          npm install
-
-      - name: Build frontend
-        run: |
-          cd frontend
-          npm run build
-
-      - name: Build and test backend
-        run: |
-          cd backend
-          npm run build
-
       - name: Login to docker registry
         uses: azure/docker-login@v1
         with:
