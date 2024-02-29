@@ -83,6 +83,6 @@ jobs:
           .AZURE_CREDENTIALS.subscriptionId }}" --overwrite-existing --admin
           kubelogin convert-kubeconfig --login azurecli
 
-#      - name: Deploy with Helm
-#        run: |
-#          helm upgrade -n helm --wait --install automation-app ./chart --set image.version=${{needs.define-version.outputs.image_version}}
+      - name: Deploy with Helm
+        run: |
+          helm upgrade -n helm --wait --install automation-app ./chart --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }}

@@ -15,7 +15,11 @@ spec:
     spec:
       restartPolicy: {{ .Values.deployment.restartPolicy }}
       containers:
-        - name: {{ .Chart.Name }}
-          image: {{ .Values.image.repository }}/{{ .Chart.Name }}:{{ .Values.image.version }}
+        - name: {{ .Chart.Name }}-backend
+          image: {{ .Values.image.repository }}/{{ .Chart.Name }}-backend:{{ .Values.image.version }}
           ports:
             - containerPort: {{ .Values.deployment.rest.port }}
+        - name: {{ .Chart.Name }}-frontend
+          image: {{ .Values.image.repository }}/{{ .Chart.Name }}-frontend:{{ .Values.image.version }}
+          ports:
+              - containerPort: {{ .Values.deployment.rest.port }}

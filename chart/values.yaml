@@ -1,27 +1,35 @@
 replicaCount: 1
 
-namespace: helm
+namespace: transcendence
 image:
-  repository: fstarykacr.azurecr.io
-  version: 1
+  repository: to_be_inputed
+  version: to_be_inputed
 
 deployment:
   restartPolicy: Always
-  rest:
-    port: 8080
-  probes:
-    port: 8081
+  backend:
+    ports:
+        - 5500
+        - 5555
+  frontend:
+      port: 3000
 
 
 service:
+  protocol: TCP
   type: ClusterIP
-  port: 80
-  targetPort: 8080
+  backend:
+    port: 5500
+  prisma:
+    port: 5555
+  frontend:
+    port: 3000
+
 
 ingress:
   enabled: true
   class: nginx
-  host: hello.fedir.hypercube.rocks
+  host: transcendence.fedir.hypercube.rocks
   tls:
   - hosts:
-      - hello.fedir.hypercube.rocks
+      - transcendence.fedir.hypercube.rocks
