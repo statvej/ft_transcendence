@@ -17,8 +17,10 @@ spec:
       containers:
         - name: {{ .Chart.Name }}-backend
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}-backend:{{ .Values.image.version }}
-          ports: {{ .Values.deployment.backend.ports }}
+          ports:
+            - containerPort: {{ .Values.deployment.backend.port }}
+            - containerPort: {{ .Values.deployment.prisma.port }}
         - name: {{ .Chart.Name }}-frontend
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}-frontend:{{ .Values.image.version }}
           ports:
-              - containerPort: {{ .Values.deployment.frontend.port }}
+            - containerPort: {{ .Values.deployment.frontend.port }}
