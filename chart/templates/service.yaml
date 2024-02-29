@@ -8,6 +8,12 @@ spec:
     app: {{ .Chart.Name }}
   ports:
     - protocol: {{.Values.service.protocol}}
-      port: {{.Values.service.port}}
-      targetPort: {{.Values.service.targetPort}}
+      port: {{.Values.service.backend.port }}
+      targetPort: {{.Values.service.backend.port }}
+    - protocol: {{.Values.service.protocol}}
+      port: {{.Values.service.frontend.port }}
+      targetPort: {{.Values.service.frontend.port }}
+    - protocol: {{.Values.service.protocol}}
+      port: {{.Values.service.prisma.port }}
+      targetPort: {{.Values.service.prisma.port }}
   type: {{.Values.service.type}}
