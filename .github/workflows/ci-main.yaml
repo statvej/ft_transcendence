@@ -94,5 +94,5 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm template ./chart --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }}
+          helm template ./chart --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }} --set deployment.backend.env.DB_URL=postgresql://postgres:${{ steps.mySecrets.outputs.fstaryk-db-admin-password }}@fstaryk-postgres.postgres.database.azure.com:5432/postgres?schema=public
           helm upgrade -n helm --wait --install transcendence-app ./chart --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }} --set deployment.backend.env.DB_URL=postgresql://postgres:${{ steps.mySecrets.outputs.fstaryk-db-admin-password }}@fstaryk-postgres.postgres.database.azure.com:5432/postgres?schema=public
