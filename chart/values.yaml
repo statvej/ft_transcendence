@@ -8,6 +8,8 @@ image:
 deployment:
   restartPolicy: Always
   backend:
+    env:
+      DB_URL: to_be_inputed
     port: 5500
   prisma:
     port: 5555

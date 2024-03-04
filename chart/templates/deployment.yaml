@@ -20,6 +20,9 @@ spec:
           ports:
             - containerPort: {{ .Values.deployment.backend.port }}
             - containerPort: {{ .Values.deployment.prisma.port }}
+          env:
+            - name: DB_URL
+              value: {{ .Values.deployment.backend.env.DB_URL }}
         - name: {{ .Chart.Name }}-frontend
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}-frontend:{{ .Values.image.version }}
           ports:
