@@ -12,9 +12,11 @@ spec:
       port: {{.Values.service.backend.port }}
       targetPort: {{.Values.service.backend.port }}
     - protocol: {{.Values.service.protocol}}
+      name: frontend
       port: {{.Values.service.frontend.port }}
       targetPort: {{.Values.service.frontend.port }}
     - protocol: {{.Values.service.protocol}}
+      name: prisma
       port: {{.Values.service.prisma.port }}
       targetPort: {{.Values.service.prisma.port }}
   type: {{.Values.service.type}}
