@@ -71,7 +71,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Test Show username
-        run:  az account show --query user.name
+        run:  az account show --query user.name | cat
 
       - uses: Azure/get-keyvault-secrets@v1
         with:
