@@ -8,6 +8,7 @@ spec:
     app: {{ .Chart.Name }}
   ports:
     - protocol: {{.Values.service.protocol}}
+      name: backend
       port: {{.Values.service.backend.port }}
       targetPort: {{.Values.service.backend.port }}
     - protocol: {{.Values.service.protocol}}
