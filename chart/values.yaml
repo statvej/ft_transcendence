@@ -31,7 +31,7 @@ service:
 ingress:
   enabled: true
   class: nginx
-  host: transcendence.fedir.hypercube.rocks
-  tls:
-  - hosts:
-      - transcendence.fedir.hypercube.rocks
+  backend:
+    host: transcendence-backend.fedir.hypercube.rocks
+  ui:
+    host: transcendence.fedir.hypercube.rocks
