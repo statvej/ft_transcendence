@@ -72,7 +72,6 @@ jobs:
 
       - id: get-secret
         name: Retrieve secret from KV
-        uses: azure/CLI@v1
         run: |
             secretValue=$(az keyvault secret show --name "fstaryk-db-admin-password" --vault-name "fstaryk-key-vault-prgble" --query "value")
             echo "db_password=$secretValue" >> $GITHUB_OUTPUT
