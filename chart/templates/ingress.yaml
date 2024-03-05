@@ -15,10 +15,17 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
-          - path: /
+          - path: /game
             pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ .Chart.Name }}-service
                 port:
                   number: {{ .Values.service.frontend.port }}
+          - path: /api
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ .Chart.Name }}-service
+                port:
+                  number: {{ .Values.service.backend.port }}
