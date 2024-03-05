@@ -22,7 +22,7 @@ spec:
             - containerPort: {{ .Values.deployment.prisma.port }}
           env:
             - name: DB_URL
-              value: {{ .Values.deployment.backend.env.DB_URL }}
+              value: postrgresql://{{ .Values.db.user }}:{{ .Values.db.password }}@{{ .Values.db.host }}:{{ .Values.db.port }}/{{ .Values.db.database }}
         - name: {{ .Chart.Name }}-frontend
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}-frontend:{{ .Values.image.version }}
           ports:

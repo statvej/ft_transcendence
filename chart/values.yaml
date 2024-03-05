@@ -16,6 +16,12 @@ deployment:
   frontend:
     port: 3000
 
+db:
+  host: fstaryk-postgres.postgres.database.azure.com
+  port: 5432
+  user: postgres
+  password: to_be_inputed
+  database: postgres
 
 service:
   protocol: TCP

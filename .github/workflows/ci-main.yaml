@@ -94,4 +94,7 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade -n helm --wait --install transcendence-app ./chart --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }} 
+          helm upgrade -n helm --wait --install transcendence-app ./chart \
+          --set image.version=${{needs.define-version.outputs.image_version}} \ 
+          --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }}  \
+          --set db.password=${{ steps.mySecrets.outputs.fstaryk-db-admin-password }}
