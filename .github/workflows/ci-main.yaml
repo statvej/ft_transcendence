@@ -91,4 +91,4 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade -n transcendence --wait --install transcendence-app ./chart   --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }} --set db.password='${{ steps.get-secret.outputs.db_password }}'
+          helm upgrade -n helm --wait --install transcendence-app ./chart   --set image.version=${{needs.define-version.outputs.image_version}} --set image.repository=${{ secrets.REGISTRY_LOGIN_SERVER }} --set db.password=${{ steps.get-secret.outputs.db_password }}
