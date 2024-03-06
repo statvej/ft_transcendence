@@ -1,4 +1,3 @@
-echo "DB_URL=$DB_URL" >> .env
 npm install
 npx prisma generate
 npx prisma db push

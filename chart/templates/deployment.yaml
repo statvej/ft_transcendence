@@ -23,6 +23,12 @@ spec:
           env:
             - name: DB_URL
               value: postgresql://{{ .Values.db.user }}:{{ .Values.db.password }}@{{ .Values.db.host }}:{{ .Values.db.port }}/{{ .Values.db.database }}
+            - name: CRYPTO_SECRET
+              value: {{ .Values.auth.crypto_secret }}
+            - name: CLIENT_SECRET
+              value: {{ .Values.auth.client_secret }}
+            - name: CLIENT_ID
+              value: {{ .Values.auth.client_id }}
         - name: {{ .Chart.Name }}-frontend
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}-frontend:{{ .Values.image.version }}
           ports:

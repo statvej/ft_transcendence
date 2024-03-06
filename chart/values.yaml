@@ -41,3 +41,8 @@ ingress:
     host: transcendence-backend.fedir.hypercube.rocks
   ui:
     host: transcendence.fedir.hypercube.rocks
+
+auth:
+  crypto_secret: to_be_input
+  client_secret: to_be_input
+  client_id: to_be_input
